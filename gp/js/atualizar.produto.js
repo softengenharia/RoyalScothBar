@@ -54,6 +54,12 @@ $("#cadastrar").click(function(e){
 	e.preventDefault();
 	e.stopImmediatePropagation();
 	
+	
+	if($("#nome").val() =="" || $("#precocusto").val()==""|| $("#mask-lucro").val()=="" ||  $("#precofinal").val() ==""|| $("#quantidade").val() ==""|| $("#fornecedor").val()=="0" || $("#pagamento").val()=="0"){
+		window.alert("Preencha todos os campos obrigatórios (*)");
+			return;
+	}
+	
 	var dataFields="nome="+$("#nome").val()+"&";
 	dataFields+="precocusto="+$("#precocusto").val()+"&";
 	dataFields+="margem="+$("#mask-lucro").val()+"&";
@@ -78,6 +84,8 @@ $("#cadastrar").click(function(e){
 	}).done(function(resposta) {
 		if(resposta.success){
 			window.alert("Produto atualizado com sucesso!");
+		}else if(resposta.falha){
+			window.alert("Produto já cadastrado!");
 		}else{
 			window.alert("Erro, tente novamente!");
 		}
@@ -91,6 +99,3 @@ $("#cadastrar").click(function(e){
 	});
 	
 });
-
-
-

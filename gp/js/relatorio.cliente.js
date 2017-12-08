@@ -17,8 +17,6 @@ function manageRow(data) {
 	$("#clientes tbody").html(rows);
 }
 
-	
-	
 $.ajax({
 	url: "../php/relatorio.cliente.php",
 	type: "POST",

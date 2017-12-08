@@ -47,6 +47,11 @@ $("#cadastrar").click(function(e){
 	e.preventDefault();
 	e.stopImmediatePropagation();
 	
+	if($("#nome").val() =="" || $("#mask-cnpj").val()=="" || $("#pagamento").val()=="0"){
+		window.alert("Preencha todos os campos obrigatórios (*)");
+		return;
+	}
+	
 	var dataFields="nome="+$("#nome").val()+"&";
 	dataFields+="cnpj="+$("#mask-cnpj").val()+"&";
 	dataFields+="endereco="+$("#endereco").val()+"&";
@@ -71,6 +76,8 @@ $("#cadastrar").click(function(e){
 	}).done(function(resposta) {
 		if(resposta.success){
 			window.alert("Fornecedor atualizado com sucesso!");
+		}else if(resposta.falha){
+			window.alert("Fornecedor já cadastrado!");
 		}else{
 			window.alert("Erro, tente novamente!");
 		}

@@ -60,6 +60,8 @@ $("#cadastrar").click(function(e){
 				$(this).val("");
 			});
 			location.reload();
+		}else if(resposta.falha){
+			window.alert("Já existem um produto com esse nome!");
 		}else{
 			window.alert("Erro, tente novamente!");
 		}

@@ -43,11 +43,7 @@ $("#cadastrar").click(function(e){
 			});
 		}
 		else if(resposta.falha){
-			window.alert("Cliente já cadastrado!");
-			var inputs=$("#form .control-group :input");
-			inputs.each(function (){
-				$(this).val("");
-			});
+			window.alert("Cliente j? cadastrado!");
 		}
 		else{
 			window.alert("Error, tente novamente!asas");

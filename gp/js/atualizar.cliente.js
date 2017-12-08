@@ -40,6 +40,11 @@ $("#cadastrar").click(function(e){
 	e.preventDefault();
 	e.stopImmediatePropagation();
 	
+	if($("#nome").val() =="" || $("#mask-cpf").val()==""){
+		window.alert("Preencha todos os campos obrigatórios (*)");
+		return;
+	}
+	
 	var dataFields="nome="+$("#nome").val()+"&";
 	dataFields+="cpf="+$("#mask-cpf").val()+"&";
 	dataFields+="endereco="+$("#endereco").val()+"&";
@@ -64,12 +69,14 @@ $("#cadastrar").click(function(e){
 	}).done(function(resposta) {
 		if(resposta.success){
 			window.alert("Cliente atualizado com sucesso!");
+		}else if(resposta.falha){
+			window.alert("Cliente já cadastrado!");
 		}else{
-			window.alert("Erro, tente novamente!3");
+			window.alert("Erro, tente novamente!");
 		}
 
 	}).fail(function(jqXHR, textStatus ) {
-		window.alert("Erro interno, tente novamente!2");
+		window.alert("Erro interno, tente novamente!");
 		console.log(textStatus);
 
 	}).always(function() {

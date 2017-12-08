@@ -50,10 +50,6 @@ $("#cadastrar").click(function(e){
 			location.reload();
 		}else if(resposta.falha){
 			window.alert("Fornecedor já cadastrado!");
-			var inputs=$("#form .control-group :input");
-			inputs.each(function (){
-				$(this).val("");
-			});
 		}
 		else{
 			window.alert("Erro, tente novamente!");

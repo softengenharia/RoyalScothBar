@@ -68,11 +68,11 @@
     </li>
 	<li class="submenu"> <a href="#"><i class="icon-list-ul"></i> <span>Relatório</span> <span class="label label-important"></span></a>
       <ul>
+	    <li><a href="../relatorios/produto.html">Produto</a></li>
+		<li><a href="../relatorios/compra.html">Compra</a></li>
         <li><a href="../relatorios/venda.html">Venda</a></li>
         <li><a href="../relatorios/fornecedor.html">Fornecedor</a></li>
-        <li><a href="../relatorios/produto.html">Produto</a></li>
 		<li><a href="../relatorios/cliente.html">Cliente</a></li>
-		<li><a href="../relatorios/compra.html">Compra</a></li>
       </ul>
     </li>
 	
@@ -176,23 +176,26 @@
 			<div class="control-group">
               <label class="control-label">*Salário (R$): </label>
               <div class="controls">
-                <input type="text" class="span11" name="salario"  placeholder="Salário" value ="0.00" id="salario"/>
+                <input type="text" class="span11" name="salario"  placeholder="Salário" value ="" id="salario"/>
               </div>
             </div>
 			<div class="control-group">
               <label class="control-label">*Usuário: </label>
               <div class="controls">
-                <input type="text" class="span11" name="usuario"  placeholder="Usuário" id="usuario" />
+                <input type="text" class="span11" name="usuario"  placeholder="Usuário" id="usuario" maxlength="9"/>
+				<span class="help-block blue span8">Pelo menos 3 dígitos.</span>
               </div>
             </div>
 			<div class="control-group">
               <label class="control-label">*Senha: </label>
               <div class="controls">
-                <input type="password" class="span11" name="senha"  placeholder="Senha" id="senha"/>
+                <input type="password" class="span11" name="senha"  placeholder="Senha" id="senha"  maxlength="6"/>
+				<span class="help-block blue span8">De 4 a 6 dígitos.</span>
               </div>
 			  <label class="control-label">*Digite novamente: </label>
               <div class="controls">
-                <input type="password" class="span11" name="senha2"  placeholder="Senha" id="csenha"/>
+                <input type="password" class="span11" name="senha2"  placeholder="Senha" id="csenha"  maxlength="6"/>
+				<span class="help-block blue span8">De 4 a 6 dígitos.</span>
               </div>
             </div>
 			 <div class="control-group">

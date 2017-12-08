@@ -20,6 +20,7 @@ $comanda ="";
 @$lista_produto_quantidade = $_POST['txtareaq'];
 @$lista_produto_deletado = $_POST['txtaread'];
 
+date_default_timezone_set('America/Sao_Paulo'); 
 $data_atual = date("Y-m-d");
 
 @$val_pago = $_POST['val_pago'];
@@ -57,9 +58,9 @@ function get_post_action($name){
 		
    case 'finalizar':
 	if(isset($comanda) and ($comanda !="") and ($pagamento != "")){
-	echo "<script>alert('Comanda setada');</script>";
+	//echo "<script>alert('Comanda setada');</script>";
 		if($lista_produto_id != ""){
-			echo "<script>alert('lista setada');</script>";
+			//echo "<script>alert('lista setada');</script>";
 				   $vlistaproduto = explode(',', $lista_produto_id);
 				   $vlistaquantidade = explode(',', $lista_produto_quantidade);
 						  
@@ -82,7 +83,10 @@ function get_post_action($name){
 					}
 							
 					}
-					
+					$troco = number_format((@$val_pago-$total), 2, ',','.');
+					$total = number_format(@$total, 2, ',','.');
+				echo "<script>alert('Venda finalizada.');</script>";
+				echo "<script>alert('Valor Total na Venda: ".number_format(@$total, 2, ',','.')." Troco: ".@$troco."');</script>";				
 		
 	} else {
 		if($cliente =="" || $funcionario=="" || $pagamento==""){
@@ -132,10 +136,7 @@ function get_post_action($name){
 							}
 					$sql6="UPDATE venda_capa SET valor_total=$total where idVenda_Capa=$id_capa";
 					$conn->query($sql6);
-					//lista de itens deletados
-					
-					
-							
+					//lista de itens deletados	
 				}
 			$troco = number_format((@$val_pago-$total), 2, ',','.');
 			$total = number_format(@$total, 2, ',','.');
@@ -453,7 +454,7 @@ resultado.value = soma.toFixed(2);
 								</div>
 							</div>
 							<div class="controls">
-								<center><textarea disabled="disabled" name="listaitens" cols="50" rows="10" id="listaitens" class="span8 m-wrap" Style= "resize: vertical;">
+								<center><textarea disabled="disabled" name="listaitens" cols="50" rows="10" id="listaitens" class="span8 m-wrap" style= "resize: vertical;">
 									<?php if(isset($comanda)) echo "Comanda selecionada: ".$comanda;?>					
 									<?php if(isset($id_Cliente)) {
 										$sqlx = "SELECT nome from cliente where idCliente = $id_Cliente";

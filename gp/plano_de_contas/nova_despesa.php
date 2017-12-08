@@ -117,7 +117,7 @@ function AdicionaLista(){
 
 </head>
 <body>
-
+<?php date_default_timezone_set('America/Sao_Paulo'); ?>
 <!--Header-part-->
 <div id="header">
   <h1><a href="#">Soft Engenharia</a></h1>
@@ -167,11 +167,11 @@ function AdicionaLista(){
 		<li class=""> <a href="../vendas/venda.html"><i class="icon-money"></i> <span>Venda</span> <span class="label label-important"></span></a></li>
 		<li class="submenu"> <a href="#"><i class="icon-list-ul"></i> <span>Relatório</span> <span class="label label-important"></span></a>
 		  <ul>
-			<li><a href="../relatorios/venda.html">Venda</a></li>
-			<li><a href="../relatorios/fornecedor.html">Fornecedor</a></li>
-			<li><a href="../relatorios/produto.html">Produto</a></li>
-			<li><a href="../relatorios/cliente.html">Cliente</a></li>
-			<li><a href="../relatorios/compra.html">Compra</a></li>
+	    <li><a href="../relatorios/produto.html">Produto</a></li>
+		<li><a href="../relatorios/compra.html">Compra</a></li>
+        <li><a href="../relatorios/venda.html">Venda</a></li>
+        <li><a href="../relatorios/fornecedor.html">Fornecedor</a></li>
+		<li><a href="../relatorios/cliente.html">Cliente</a></li>
 		  </ul>
 		</li>
 		
@@ -181,7 +181,7 @@ function AdicionaLista(){
 
 <div id="content">
 	<div id="content-header">
-		<div id="breadcrumb"> <a href="../admin.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">Plano de Contas</a> </div>
+		<div id="breadcrumb"> <a href="../admin.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="plano_contas.html" class="current">Plano de Contas</a><a href="#" class="current">Nova dispesa</a></div>
 	</div>
 	  
 	<div class="container-fluid" >	
@@ -197,8 +197,8 @@ function AdicionaLista(){
 							<div class="modal-body">
 								<label class="control-label">Titulo da Despesa / Data</label>
 								<div class="controls controls-row">
-									<input type="text" placeholder="Titulo da Receita"  name="titulo" class="span8 m-wrap" >
-									<input type="text" data-date-format="dd-mm-yyyy" id="mask-data" name="dataLimite" class="datepicker span4" value="05-12-2017" />	
+									<input type="text" placeholder="Titulo da Despesa"  name="titulo" class="span8 m-wrap" >
+									<input type="text" data-date-format="dd-mm-yyyy" id="mask-data" name="dataLimite" class="datepicker span4" value="<?php echo date('d-m-Y');?>" />	
 								</div>							
 								<label class="control-label">Situação / Forma de Pagamento</label>
 								<div class="controls controls-row">
@@ -251,7 +251,7 @@ function AdicionaLista(){
 							</div>
 							
 							<div class="controls">
-								<input type="submit" name="finalizar" id="cadastrar_p_venda" value="Adicionar Receita" class="btn btn-primary btn-lg btn-block">
+								<input type="submit" name="finalizar" id="cadastrar_p_venda" value="Adicionar Dispesa" class="btn btn-primary btn-lg btn-block">
 							</div>
 						</form>		
 					</div>
@@ -326,7 +326,7 @@ if($titulo == "" || $situacao == "0" || $pagamento=="0" || $data_limite==""){
 						$total = $total - $val_desc;
 					$sql6="UPDATE planocontas_capa SET valor_total=$total where idPlanoContas_Capa=$id_capa";
 					$conn->query($sql6);
-					echo "<script>alert('Lancamento Efetuado com Sucesso');</script>";
+					echo "<script>alert('Lançamento efetuado com sucesso.');</script>";
 					//echo "<script>alert('$total');</script>";
 					@header('Refresh:1; url=nova_receita.php');
 			}

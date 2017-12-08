@@ -10,7 +10,7 @@ if ($conn->connect_error) {
 }
 
 $sql= "SELECT p.idProduto,p.nome as nomeProduto,p.preco_final,".
-	"p.quantidade,p.codigo_barras,p.observacao,f.nome AS nomeFornecedor,f.CNPJ,fp.nome AS pagamento ".
+	"p.quantidade,IFNULL(p.codigo_barras,'') as codigo_barras,IFNULL(p.observacao,'') as observacao,f.nome AS nomeFornecedor,f.CNPJ,fp.nome AS pagamento ".
 	"FROM produto AS p,fornecedor as f, forma_pagamento as fp ".
 	"WHERE p.idFornecedor=f.idFornecedor AND p.idForma_Pagamento=fp.idForma_Pagamento";
 	

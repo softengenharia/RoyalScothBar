@@ -9,21 +9,30 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql= "UPDATE produto SET nome=?,preco_custo=?,margem=?,preco_final=?,quantidade=?,codigo_barras=?,observacao=?,".
-	" idFornecedor=?,idForma_pagamento=? ".
-	" WHERE idProduto=?";
+$nome=$_POST["nome"];
+$id=$_POST["id"];
 
-$stmt=$conn->prepare($sql);
+$sql2 = "SELECT nome FROM produto WHERE nome = '$nome'  AND idProduto != '$id'";
+$stmt2=$conn->query($sql2);
 
-$stmt->bind_param("sssssssiii",$_POST["nome"],$_POST["precocusto"],$_POST["margem"],$_POST["precofinal"],$_POST["quantidade"],$_POST["codigobarras"],
-			$_POST["observacao"],
-			intval($_POST["id"]),intval($_POST["id"]),intval($_POST["id"]));
-			
-$success = $stmt->execute();
-$stmt->close();
+if($stmt2->num_rows > 0){
+	$result = ['falha' => true];
+}else{
+	$sql= "UPDATE produto SET nome=?,preco_custo=?,margem=?,preco_final=?,quantidade=?,codigo_barras=?,observacao=?,".
+		" idFornecedor=?,idForma_pagamento=? ".
+		" WHERE idProduto=?";
 
-$result = ['success' => $success];
+	$stmt=$conn->prepare($sql);
 
+	$stmt->bind_param("sssssssiii",$_POST["nome"],$_POST["precocusto"],$_POST["margem"],$_POST["precofinal"],$_POST["quantidade"],$_POST["codigobarras"],
+				$_POST["observacao"],
+				intval($_POST["fornecedor"]),intval($_POST["pagamento"]),intval($_POST["id"]));
+				
+	$success = $stmt->execute();
+	$stmt->close();
+
+	$result = ['success' => $success];
+}
 print json_encode($result);
 $conn->close();
 ?> 

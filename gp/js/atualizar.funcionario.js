@@ -9,8 +9,8 @@ function inicializarForm(data){
 	$("#mask-cep").val(data["cep"]);
 	$("#salario").val(data["salario"]);
 	$("#usuario").val(data["usuario"]);
-	$("#senha").val(data["senha"]);
-	$("#csenha").val(data["csenha"]);
+	$("#senha").val(data[""]);
+	$("#csenha").val(data[""]);
 	$("#mask-celular").val(data["telefone"]).change();	
 }
 
@@ -44,6 +44,23 @@ $("#cadastrar").click(function(e){
 	e.preventDefault();
 	e.stopImmediatePropagation();
 	
+	if($("#nome").val() =="" || $("#mask-cpf").val()=="" || $("#salario").val()=="" || $("#senha").val()=="" || $("#csenha").val()==""){
+		window.alert("Preencha todos os campos obrigatórios (*)");
+		return;
+	}
+	if($("#senha").val() != $("#csenha").val() ){
+		window.alert("A senha e a confirmação de senha devem ser iguais.");
+		return;
+	}
+	if($("#senha").val().length < 4){
+		window.alert("A senha deve ter de 4 a 6 dígitos.");
+		return;
+	}
+	if($("#usuario").val().length < 3){
+		window.alert("A usuário deve ter no minimo 3 dígitos.");
+		return;
+	}
+	
 	var dataFields="nome="+$("#nome").val()+"&";
 	dataFields+="cpf="+$("#mask-cpf").val()+"&";
 	dataFields+="rg="+$("#rg").val()+"&";
@@ -60,7 +77,7 @@ $("#cadastrar").click(function(e){
 	dataFields+="id="+id;
 	
 	//console.log("Beep");
-	console.log(dataFields);
+	//console.log(dataFields);
 	//return;
 	
 	$.ajax({
@@ -72,6 +89,10 @@ $("#cadastrar").click(function(e){
 	}).done(function(resposta) {
 		if(resposta.success){
 			window.alert("Funcionário atualizado com sucesso!");
+		}else if(resposta.falha){
+			window.alert("Funcionário já cadastrado!");
+		}else if(resposta.falhau){
+			window.alert("Já existe esse usuário!");
 		}else{
 			window.alert("Erro, tente novamente!");
 		}

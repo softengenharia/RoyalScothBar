@@ -20,13 +20,11 @@ $("#procurar").click(function(e){
 	e.preventDefault();
 	e.stopImmediatePropagation();
 			
-	var dataInicial=$("#dataInicial").val();
-	var dataFinal=$("#dataFinal").val();
+	var dataInicial=$("#mask-data").val();
+	var dataFinal=$("#mask-data2").val();
 	
-	
-	
-	if(dataInicial=="" && dataFinal==""){
-		window.alert("Digite as datas");
+	if(dataInicial=="" || dataFinal==""){
+		window.alert("Digite as datas.");
 		return;
 	}
 	
@@ -45,7 +43,7 @@ $("#procurar").click(function(e){
 			manageRow(data.data);
 			
 		}else{
-			window.alert("Nenhuma compra encontrada!");
+			window.alert("Nenhuma compra encontrada nesse intervalo de datas!");
 		}
 
 	}).fail(function(jqXHR, textStatus ) {

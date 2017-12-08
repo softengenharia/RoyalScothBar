@@ -19,8 +19,20 @@ $("#cadastrar").click(function(e){
 	
 	
 	if(nome == "" || cpf == "" || salario == "" || usuario == "" || senha == "" || csenha == ""){
-			window.alert("Preencha todos os campos obrigatórios (*)");
-			return;
+		window.alert("Preencha todos os campos obrigatórios (*)");
+		return;
+	}
+	if(senha != csenha ){
+		window.alert("A senha e a confirmação de senha devem ser iguais.");
+		return;
+	}
+	if(senha.length < 4){
+		window.alert("A senha deve ter de 4 a 6 dígitos.");
+		return;
+	}
+	if(usuario.length < 3){
+		window.alert("A usuário deve ter no minimo 3 dígitos.");
+		return;
 	}
 	
 	$.each(valuesFields,function(field,key){
@@ -47,10 +59,8 @@ $("#cadastrar").click(function(e){
 			});
 		}else if(resposta.falha){
 			window.alert("Funcionário já cadastrado!");
-			var inputs=$("#form .control-group :input");
-			inputs.each(function (){
-				$(this).val("");
-			});
+		}else if(resposta.falhau){
+			window.alert("Já existe esse usuário!");
 		}else{
 			window.alert("Erro, tente novamente!");
 		}

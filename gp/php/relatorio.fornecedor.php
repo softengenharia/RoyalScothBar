@@ -9,8 +9,8 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql= "SELECT f.idFornecedor,f.nome,f.cnpj,f.endereco,".
-	"f.cidade,f.estado,f.complemento,f.cep,f.telefone,".
+$sql= "SELECT f.idFornecedor,f.nome,f.cnpj,IFNULL(f.endereco,'') as endereco,".
+	" IFNULL(f.cidade,'') as cidade,IFNULL(f.estado,'') as estado,IFNULL(f.complemento,'') as complemento,IFNULL(f.cep,'') as cep,IFNULL(f.telefone,'') as telefone,".
 	"fp.nome AS pagamento ".
 	"FROM fornecedor as f, forma_pagamento as fp ".
 	"WHERE f.idForma_Pagamento=fp.idForma_Pagamento";

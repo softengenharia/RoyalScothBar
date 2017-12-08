@@ -13,7 +13,6 @@ function manageRow(data) {
 		rows = rows + '<td>'+value.comanda+'</td>';
 		rows = rows + '<td>'+value.nomeFuncionario+'</td>';
 		rows = rows + '</tr>';       
-		
 	});
 	$("#vendas tbody").html(rows);
 }
@@ -23,19 +22,16 @@ $("#procurar").click(function(e){
 	e.preventDefault();
 	e.stopImmediatePropagation();
 			
-	var dataInicial=$("#dataInicial").val();
-	var dataFinal=$("#dataFinal").val();
-	
-	
-	
-	if(dataInicial=="" && dataFinal==""){
-		window.alert("Digite as datas");
+	var dataInicial=$("#mask-data").val();
+	var dataFinal=$("#mask-data2").val();
+
+	if(dataInicial=="" || dataFinal==""){
+		window.alert("Digite as datas.");
 		return;
 	}
 	
 	var dataFields="datainicial="+dataInicial+"&datafinal="+dataFinal;
 	console.log(dataFields)
-	
 	
 	$.ajax({
 		url: "../php/relatorio.venda.php",
@@ -48,7 +44,7 @@ $("#procurar").click(function(e){
 			manageRow(data.data);
 			
 		}else{
-			window.alert("Nenhuma venda encontrada!");
+			window.alert("Nenhuma venda encontrada nesse intervalo de datas!");
 		}
 
 	}).fail(function(jqXHR, textStatus ) {

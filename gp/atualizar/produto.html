@@ -68,11 +68,11 @@
     </li>
 	<li class="submenu"> <a href="#"><i class="icon-list-ul"></i> <span>Relatório</span> <span class="label label-important"></span></a>
       <ul>
+	    <li><a href="../relatorios/produto.html">Produto</a></li>
+		<li><a href="../relatorios/compra.html">Compra</a></li>
         <li><a href="../relatorios/venda.html">Venda</a></li>
         <li><a href="../relatorios/fornecedor.html">Fornecedor</a></li>
-        <li><a href="../relatorios/produto.html">Produto</a></li>
 		<li><a href="../relatorios/cliente.html">Cliente</a></li>
-		<li><a href="../relatorios/compra.html">Compra</a></li>
       </ul>
     </li>
   </ul>
@@ -116,7 +116,7 @@
 			<div class="control-group">
               <label class="control-label">*Margem de Lucro (%): </label>
               <div class="controls">
-                <input type="text" class="span11" name="margem" placeholder="___%" id="mask-lucro"/>
+                <input type="text" class="span11" name="margem" placeholder="___%" id="mask-lucro" onblur="porcentagem();"/>
               </div>
             </div>
 			<div class="control-group">
@@ -193,5 +193,16 @@
 	$('.textarea_editor').wysihtml5();
 </script>
 
+<script>
+function porcentagem(){
+	var preco_custo = document.getElementById('precocusto');
+	var porcentagem_lucro = document.getElementById('mask-lucro');
+	var precofinal = document.getElementById('precofinal');
+	var preco = Number(preco_custo.value);
+	var porcentagem = Number(porcentagem_lucro.value);
+	var aux = (preco + ((preco)*((porcentagem)/100)));
+	precofinal.value = aux;
+}	
+</script>
 </body>
 </html>

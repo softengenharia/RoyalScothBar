@@ -48,7 +48,7 @@ $("#consultar").click(function(e){
 			manageRow(data.data);
 			
 		}else{
-			window.alert("Nenhum registro encontrado!");
+			window.alert("Nenhum registro encontrado nesse intervalo de datas!");
 		}
 
 	}).fail(function(jqXHR, textStatus ) {

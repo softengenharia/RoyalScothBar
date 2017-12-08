@@ -9,7 +9,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql= "SELECT idCliente,nome,cpf,rg,endereco,cidade,estado,cep,telefone ".
+$sql= "SELECT idCliente,nome,cpf,IFNULL(rg,'') as rg,IFNULL(endereco,'') as endereco, IFNULL(cidade,'') as cidade,IFNULL(estado,'') as estado, IFNULL(cep,'') as cep, IFNULL(telefone,'') as telefone ".
 	"FROM cliente";
 
 

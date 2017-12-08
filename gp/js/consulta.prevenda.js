@@ -51,7 +51,7 @@ $("#consultar").click(function(e){
 			manageRow(data.data);
 			
 		}else{
-			window.alert("Nenhuma pré-venda encontrada!");
+			window.alert("Nenhuma pré-venda encontrada nesse intervalo de datas!");
 		}
 
 	}).fail(function(jqXHR, textStatus ) {
@@ -102,7 +102,7 @@ var datainicial=$("#mask-data").val();
 			manageRow(data.data);
 			
 		}else{
-			window.alert("Nenhuma pré-venda encontrada!");
+			window.alert("Nenhuma pré-venda encontrada nesse intervalo de datas!");
 		}
 
 	}).fail(function(jqXHR, textStatus ) {

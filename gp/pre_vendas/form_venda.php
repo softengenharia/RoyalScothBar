@@ -62,11 +62,11 @@
 	<li class=""> <a href="../vendas/venda.html"><i class="icon-money"></i> <span>Venda</span> <span class="label label-important"></span></a></li>
 	<li class="submenu"> <a href="#"><i class="icon-list-ul"></i> <span>Relatório</span> <span class="label label-important"></span></a>
       <ul>
+	    <li><a href="../relatorios/produto.html">Produto</a></li>
+		<li><a href="../relatorios/compra.html">Compra</a></li>
         <li><a href="../relatorios/venda.html">Venda</a></li>
         <li><a href="../relatorios/fornecedor.html">Fornecedor</a></li>
-        <li><a href="../relatorios/produto.html">Produto</a></li>
 		<li><a href="../relatorios/cliente.html">Cliente</a></li>
-		<li><a href="../relatorios/compra.html">Compra</a></li>
       </ul>
     </li>
   </ul>
@@ -323,6 +323,7 @@ if ($conn->connect_error) {
 @$lista_produto_quantidade = $_POST['txtareaq'];
 
 @$lista_produto_deletado = $_POST['txtaread'];
+date_default_timezone_set('America/Sao_Paulo'); 
 $data_atual = date("Y-m-d");
 
 	if($cliente =="" || $funcionario=="" || $comanda=="" || $pagamento=="" || $produto == "" || $quantidade == ""){
@@ -333,6 +334,7 @@ $data_atual = date("Y-m-d");
 		while($row=$result->fetch_assoc()){
 			@$verificacao = $row['idVenda_Capa'];
 		}
+		echo "<script>alert('Pré-Venda Efetuada com Sucesso');</script>";
 		//var_dump($verificacao);
 		if(@$verificacao == ""){
 			//echo "<script>alert('Comanda entrou');</script>";
@@ -383,7 +385,7 @@ $data_atual = date("Y-m-d");
 				
 				$sql6="UPDATE venda_capa SET valor_total=$total where idVenda_Capa=$id_capa";
 				$conn->query($sql6);
-				echo "<script type='javascript'>alert('Pre-Venda Efetuada com Sucesso');";		
+						
 			}
 		}else{
 			echo "<script>alert('Comanda ja está em uso');</script>";
