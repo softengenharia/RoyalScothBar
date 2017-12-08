@@ -10,7 +10,9 @@ function manageRow(data) {
 		rows = rows + '<td>'+value.fornecedor+'</td>';
 		rows = rows + '<td>'+value.pagamento+'</td>';
 		rows = rows + '<td>'+value.observacao+'</td>';
-		rows = rows + '</tr>';
+		rows = rows + '<td> <a href="'+"../php/deletar.planocontas.php?id="+value.idPlanoContas_Capa
+			+'"> <img id="pencil-editar" style="width:30px" src="../img/delete.png" > </a> </td>';
+		rows = rows + '</tr>';   
 	});
 	$("#clientes tbody").html(rows);
 }

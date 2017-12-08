@@ -34,7 +34,7 @@ if ($conn->connect_error) {
 							if($row['usuario']=="admin"){
 								header("location:../admin.html");
 							} else {
-							header("location: ../funcionario.html");	
+							header("location: ../funcionario/funcionario.html");	
 							}
 						}
 						

@@ -18,7 +18,6 @@ function manageRow(data) {
 		rows = rows + '<td> <a href="'+"../atualizar/produto.html?id="+value.idProduto
 			+'"> <img id="pencil-editar" style="width:30px" src="../img/lapis.png" > </a> </td>';
 		rows = rows + '</tr>';      
-		
 	});
 	$("#clientes tbody").html(rows);
 }

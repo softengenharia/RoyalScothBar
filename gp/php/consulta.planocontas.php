@@ -15,7 +15,7 @@ $datainicial= date('Y-m-d',  strtotime($datainicial));
 $datafinal=$_POST["datafinal"];
 $datafinal= date('Y-m-d',  strtotime($datafinal));
 
-$sqlbase="SELECT DATE_FORMAT(pc.data, '%d-%m-%Y') as data2, pc.entrada, fp.nome as pagamento, f.nome as fornecedor, pc.situacao, pc.valor_total as valortotal, IFNULL(observacao,'') as observacao, pc.titulo FROM planocontas_capa AS pc, fornecedor as f, forma_pagamento as fp WHERE pc.idForma_pagamento = fp.idForma_pagamento AND  pc.idFornecedor = f.idFornecedor AND pc.data BETWEEN '".$datainicial."' AND '".$datafinal."'";
+$sqlbase="SELECT pc.idPlanoContas_Capa,DATE_FORMAT(pc.data, '%d-%m-%Y') as data2, pc.entrada, fp.nome as pagamento, f.nome as fornecedor, pc.situacao, pc.valor_total as valortotal, IFNULL(observacao,'') as observacao, pc.titulo FROM planocontas_capa AS pc, fornecedor as f, forma_pagamento as fp WHERE pc.idForma_pagamento = fp.idForma_pagamento AND  pc.idFornecedor = f.idFornecedor AND pc.data BETWEEN '".$datainicial."' AND '".$datafinal."'";
 
 if($situacao == ""){
 	die("Nenhum parametro!");
