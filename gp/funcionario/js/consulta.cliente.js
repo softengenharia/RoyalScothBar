@@ -12,8 +12,6 @@ function manageRow(data) {
 		rows = rows + '<td>'+value.estado+'</td>';
 		rows = rows + '<td>'+value.cep+'</td>';
 		rows = rows + '<td>'+value.telefone+'</td>';
-		rows = rows + '<td> <a href="'+"../atualizar/cliente.html?id="+value.idCliente
-			+'"> <img id="pencil-editar" style="width:30px" src="../img/lapis.png" > </a> </td>';
 		rows = rows + '</tr>';    
 		
 	});

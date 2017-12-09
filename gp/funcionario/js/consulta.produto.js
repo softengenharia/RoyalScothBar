@@ -15,8 +15,6 @@ function manageRow(data) {
 		rows = rows + '<td>'+value.quantidade+'</td>';
 		rows = rows + '<td>'+value.fornecedor+'</td>';
 		rows = rows + '<td>'+value.observacao+'</td>';
-		rows = rows + '<td> <a href="'+"../atualizar/produto.html?id="+value.idProduto
-			+'"> <img id="pencil-editar" style="width:30px" src="../img/lapis.png" > </a> </td>';
 		rows = rows + '</tr>';      
 		
 	});
